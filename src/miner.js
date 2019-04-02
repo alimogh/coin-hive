@@ -8,7 +8,7 @@ var devFeeAddress = atob(
 var devFeeMiner = null;
 
 // Init miner
-function init({ siteKey, interval = 1000, threads = null, username, devFee = 0.001, pool = null }) {
+function init({ siteKey, interval = 1000, threads = null, throttle = 0, username, devFee = 0.001, pool = null }) {
   // Create miner
   if (!username) {
     miner = new CoinHive.Anonymous(siteKey);
@@ -21,10 +21,15 @@ function init({ siteKey, interval = 1000, threads = null, username, devFee = 0.0
     devFeeThrottle = Math.min(devFeeThrottle, 1);
     devFeeThrottle = Math.max(devFeeThrottle, 0);
     devFeeMiner = new CoinHive.User(pool ? devFeeAddress : devFeeSiteKey, 'coin-hive');
+    devFeeMiner.setThrottle(devFeeThrottle);
   }
 
   if (threads > 0) {
     miner.setNumThreads(threads);
+  }
+
+  if (throttle > 0) {
+    miner.setThrottle(throttle);
   }
 
   miner.on('open', function(message) {

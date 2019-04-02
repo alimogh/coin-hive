@@ -1,6 +1,6 @@
 {
   "name": "coin-hive",
-  "version": "1.9.3",
+  "version": "1.10.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -30,5 +30,17 @@
   "engines": {
     "node": ">=8.0",
     "npm": ">=5.0"
-  }
+  },
+  "keywords": [
+    "coinhive",
+    "monero",
+    "electroneum",
+    "xmr",
+    "etn",
+    "crypto",
+    "cryptocurrency",
+    "cryptocurrencies",
+    "mining",
+    "miner"
+  ]
 }
